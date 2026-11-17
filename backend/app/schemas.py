@@ -3,7 +3,7 @@ from __future__ import annotations
 
 from typing import Any, Generic, TypeVar
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 
 T = TypeVar("T")
 
@@ -19,13 +19,27 @@ class ActionResult(BaseModel):
     ok: bool
     message: str
     entry: dict[str, Any] | None = None
+    # 处置动作回写后的真实节点可调度性，列表定位、详情与节点模块共用同一身份。
+    node: dict[str, Any] | None = None
 
 
 class EntryPayload(BaseModel):
-    """登记或修改一条业务记录时提交的字段集合。"""
+    """登记或修改一条业务记录时提交的字段集合。
+
+    兼容两种提交方式：字段收在 ``values`` 里，或直接把 ``action`` 等字段放在顶层。
+    两种写法会合并到 ``values``，路由层只读 ``values``，避免动作被静默丢弃。
+    """
+
+    model_config = ConfigDict(extra="allow")
 
     values: dict[str, Any] = Field(default_factory=dict)
     remark: str | None = None
+
+    def merged_values(self) -> dict[str, Any]:
+        merged = dict(self.values)
+        for key, value in (self.model_extra or {}).items():
+            merged.setdefault(key, value)
+        return merged
 
 
 

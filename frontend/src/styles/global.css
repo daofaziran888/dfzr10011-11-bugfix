@@ -33,3 +33,30 @@ body { margin: 0; background: #f6f8fb; color: #1f2937; }
 .link { border: none; background: none; color: var(--brand); cursor: pointer; padding: 0; }
 .page-foot { display: flex; justify-content: space-between; margin-top: 8px; font-size: 12px; color: var(--muted); }
 .error-text { color: #b42318; }
+
+/* 巡检与节点模块：定位高亮、分页、详情与聚合面板 */
+.row-active { background: #eef4ff; }
+.tag { display: inline-block; margin-right: 4px; padding: 1px 6px; border-radius: 10px; font-size: 12px; }
+.tag.done { background: #e6f4ea; color: #1e7e34; }
+.tag.pending { background: #fff4e5; color: #b26a00; }
+.tag.conflict { background: #fdecea; color: #b42318; }
+.pager { display: flex; gap: 6px; margin-top: 10px; }
+.policy-bar, .create-panel { display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-end; margin: 12px 0; padding: 10px 12px; background: #fff; border: 1px solid var(--border); border-radius: 8px; }
+.policy-label { font-size: 12px; color: var(--muted); align-self: center; }
+.policy-hint { font-size: 12px; color: var(--muted); }
+.detail-panel, .inspection-panels { margin-top: 14px; padding: 12px 14px; background: #fff; border: 1px solid var(--border); border-radius: 8px; }
+.panel-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+.panel-head h3 { margin: 0; font-size: 15px; }
+.panel-scope { font-size: 12px; color: var(--muted); }
+.detail-grid { display: grid; grid-template-columns: 140px 1fr; gap: 4px 12px; font-size: 13px; margin: 0 0 8px; }
+.detail-grid dt { color: var(--muted); }
+.detail-grid dd { margin: 0; }
+.detail-list { margin: 0 0 8px; padding-left: 18px; font-size: 13px; }
+.detail-hint, .switch-note { font-size: 12px; color: var(--muted); }
+.switch-note { color: #b26a00; }
+.tab-row { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+.tab { border: 1px solid var(--border); background: #fff; border-radius: 6px; padding: 5px 10px; cursor: pointer; font-size: 13px; }
+.tab.active { background: var(--brand); border-color: var(--brand); color: #fff; }
+.tab-count { margin-left: 6px; font-size: 12px; opacity: .8; }
+select { padding: 6px 8px; border: 1px solid var(--border); border-radius: 6px; background: #fff; }
+input { padding: 6px 8px; border: 1px solid var(--border); border-radius: 6px; }
